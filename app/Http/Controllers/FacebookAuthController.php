@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
-class FacebookAuth extends Controller
+class FacebookAuthController extends Controller
 {
     public function redirect()
     {

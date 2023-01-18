@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\GoogleAuth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FacebookAuth;
+use App\Http\Controllers\{FacebookAuthController,GoogleAuthController};
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -30,10 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('auth/google', [GoogleAuth::class, 'redirect'])->name('google-auth');
-Route::get('auth/google/callback-url', [GoogleAuth::class, 'callbackGoogle']);
+Route::get('auth/google', [GoogleAuthController::class, 'redirect'])->name('google-auth');
+Route::get('auth/google/callback-url', [GoogleAuthController::class, 'callbackGoogle']);
 
-Route::get('auth/facebook', [FacebookAuth::class, 'redirect'])->name('facebook-auth');
-Route::get('/callback', [FacebookAuth::class, 'callbackFacebook']);
+Route::get('auth/facebook', [FacebookAuthController::class, 'redirect'])->name('facebook-auth');
+Route::get('/callback', [FacebookAuthController::class, 'callbackFacebook']);
 
 require __DIR__.'/auth.php';
